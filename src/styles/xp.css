@@ -1,0 +1,39 @@
+:root {
+    --xp-blue: #245edb;
+    --xp-taskbar: #0c59cf;
+    --xp-light: #3a6fe2;
+    --xp-border: #0831d9;
+    --xp-window: #ece9d8;
+}
+
+.xp-desktop {
+    width: 100vw;
+    height: 100vh;
+
+    background-image:
+        url('@/assets/wallpaper/xp.jpg'), 
+        linear-gradient(to bottom, #3a6ea5, #245edb);
+    background-repeat: no-repeat;
+    background-position: center; /* 图片居中 */
+    background-size: cover;      /* 图片铺满 */
+    position: relative;
+}
+
+.xp-taskbar {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 5%;
+
+    background: linear-gradient(
+        to bottom,
+        #3c8df0,
+        #245edb
+    );
+
+    border-top: 1px solid #6ea7ff;
+
+    display: flex;
+    align-items: center;
+}

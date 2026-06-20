@@ -56,6 +56,7 @@ export interface SystemInfo {
   mem_total_kb?: number
   mem_available_kb?: number
   ip_addresses?: Array<{ name: string; ip: string }>
+  client_ip?: string
 }
 
 export interface FsEntry {

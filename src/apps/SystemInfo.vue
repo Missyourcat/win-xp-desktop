@@ -24,12 +24,10 @@
       </div>
 
       <div class="sysinfo-section">
-        <div class="sysinfo-section-title">网络</div>
+        <div class="sysinfo-section-title">网络(网络并非法外之地，请注意言行举止)</div>
+        <div class="sysinfo-row"><span class="sysinfo-label">访问者 IP</span><span>{{ info.client_ip || '-' }}</span></div>
         <div class="sysinfo-row" v-for="ip in (info.ip_addresses || [])" :key="ip.name">
           <span class="sysinfo-label">{{ ip.name }}</span><span>{{ ip.ip }}</span>
-        </div>
-        <div v-if="!info.ip_addresses?.length" class="sysinfo-row">
-          <span class="sysinfo-label">IP</span><span>-</span>
         </div>
       </div>
 

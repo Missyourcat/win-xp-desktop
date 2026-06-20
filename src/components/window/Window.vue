@@ -28,6 +28,7 @@ import type { AppWindow } from '@/types'
 import { useWindowsStore } from '@/stores/windows'
 import FileSystem from '@/apps/FileSystem.vue'
 import Browser from '@/apps/Browser.vue'
+import SystemInfo from '@/apps/SystemInfo.vue'
 
 const props = defineProps<{ win: AppWindow }>()
 
@@ -40,6 +41,7 @@ const resizeRef = ref<HTMLElement | null>(null)
 const appMap: Record<string, unknown> = {
   FileSystem: markRaw(FileSystem),
   Browser: markRaw(Browser),
+  SystemInfo: markRaw(SystemInfo),
   GenericApp: markRaw(GenericApp),
 }
 

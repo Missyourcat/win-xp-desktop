@@ -45,6 +45,21 @@ interface CategoriesResponse extends ApiResponse {
   }>
 }
 
+interface SystemInfoResponse extends ApiResponse {
+  data?: {
+    os_name?: string
+    os_release?: string
+    os_version?: string
+    machine?: string
+    hostname?: string
+    cpu_count?: number
+    cpu_model?: string
+    mem_total_kb?: number
+    mem_available_kb?: number
+    ip_addresses?: Array<{ name: string; ip: string }>
+  }
+}
+
 interface FilesResponse extends ApiResponse {
   data?: Array<{
     id: number
@@ -89,5 +104,8 @@ export const api = {
   },
   getFiles(categoryId: number): Promise<FilesResponse> {
     return request(`/files?category_id=${categoryId}`)
+  },
+  getSystemInfo(): Promise<SystemInfoResponse> {
+    return request('/system/info')
   },
 }

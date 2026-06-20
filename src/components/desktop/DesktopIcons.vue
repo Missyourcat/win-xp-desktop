@@ -31,6 +31,16 @@ function openApp(icon: DesktopIcon) {
       width: 700,
       height: 480,
     })
+  } else if (icon.desktop_name === '我的电脑') {
+    wins.openWindow({
+      id: 'system-info',
+      title: icon.desktop_name,
+      component: 'SystemInfo',
+      x: 100,
+      y: 40,
+      width: 520,
+      height: 440,
+    })
   } else if (icon.desktop_name === '浏览器') {
     wins.openWindow({
       id: 'browser',

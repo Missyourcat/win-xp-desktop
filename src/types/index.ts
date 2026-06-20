@@ -45,6 +45,19 @@ export interface FileResource {
   created_at?: string
 }
 
+export interface SystemInfo {
+  os_name?: string
+  os_release?: string
+  os_version?: string
+  machine?: string
+  hostname?: string
+  cpu_count?: number
+  cpu_model?: string
+  mem_total_kb?: number
+  mem_available_kb?: number
+  ip_addresses?: Array<{ name: string; ip: string }>
+}
+
 export interface FsEntry {
   id: string
   name: string

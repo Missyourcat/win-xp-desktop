@@ -1,5 +1,5 @@
-// const API_BASE = import.meta.env.VITE_API_BASE || '/tof/r1/api'
-const API_BASE = 'https://win-xp-kernel.onrender.com/tof/r1/api'
+const API_BASE = import.meta.env.VITE_API_BASE || '/tof/r1/api'
+// const API_BASE = 'https://win-xp-kernel.onrender.com/tof/r1/api'
 
 export function getDownloadUrl(relativePath: string): string {
   return `${API_BASE}/file/download?path=${encodeURIComponent(relativePath)}`
@@ -74,6 +74,36 @@ interface FilesResponse extends ApiResponse {
   }>
 }
 
+export interface ArticleCategory {
+  id: number
+  name: string
+  description?: string
+}
+
+export interface ArticleItem {
+  id: number
+  category_id: number
+  title: string
+  summary?: string
+  content_md?: string
+  view_count: number
+  created_at?: string
+  updated_at?: string
+  keywords?: string[]
+}
+
+interface ArticleCategoriesResponse extends ApiResponse {
+  data?: ArticleCategory[]
+}
+
+interface ArticlesResponse extends ApiResponse {
+  data?: ArticleItem[]
+}
+
+interface ArticleResponse extends ApiResponse {
+  data?: ArticleItem
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
     headers: { 'Content-Type': 'application/json' },
@@ -108,5 +138,18 @@ export const api = {
   },
   getSystemInfo(): Promise<SystemInfoResponse> {
     return request('/system/info')
+  },
+  getArticleCategories(): Promise<ArticleCategoriesResponse> {
+    return request('/article_categories')
+  },
+  getArticles(categoryId?: number): Promise<ArticlesResponse> {
+    const qs = categoryId ? `?category_id=${categoryId}` : ''
+    return request('/articles' + qs)
+  },
+  getArticle(id: number): Promise<ArticleResponse> {
+    return request(`/articles/${id}`)
+  },
+  incrementView(id: number): Promise<ApiResponse> {
+    return request(`/articles/${id}/view`, { method: 'PUT' })
   },
 }

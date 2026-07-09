@@ -21,7 +21,9 @@ const store = useDesktopStore()
 const wins = useWindowsStore()
 
 function openApp(icon: DesktopIcon) {
-  if (icon.desktop_name === '我的文件') {
+  if (icon.desktop_url?.startsWith('http')) {
+    window.open(icon.desktop_url, '_blank')
+  } else if (icon.desktop_name === '我的文件') {
     wins.openWindow({
       id: 'filesystem',
       title: icon.desktop_name,

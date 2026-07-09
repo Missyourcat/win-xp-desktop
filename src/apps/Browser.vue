@@ -144,6 +144,7 @@ const bodyHtml = computed(() => {
   const md = article.value?.content_md || ''
   if (!md) return ''
   let html = marked.parse(md, { gfm: true }) as string
+  html = html.replace(/src="(\/[^"]+)"/g, 'src="https://win-xp-kernel.onrender.com$1"')
   return html.replace(/<h([1-6])([^>]*)>(.*?)<\/h\1>/g, (s, lvl, attrs, txt) => {
     if (/id=["']/.test(attrs)) return s
     return `<h${lvl}${attrs} id="${headingId(txt)}">${txt}</h${lvl}>`

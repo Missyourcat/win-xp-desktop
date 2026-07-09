@@ -74,9 +74,11 @@ function openApp(icon: DesktopIcon) {
   top: 12px;
   left: 12px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   gap: 8px;
+  max-height: calc(100vh - 24px);
   z-index: 10;
+  align-content: flex-start;
 }
 
 .desktop-icon {
@@ -125,8 +127,8 @@ function openApp(icon: DesktopIcon) {
 
 @media (max-width: 600px) {
   .desktop-icons {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+    max-height: none;
     gap: 4px;
     top: 8px;
     left: 8px;

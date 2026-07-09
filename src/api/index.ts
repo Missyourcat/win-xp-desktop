@@ -1,5 +1,5 @@
-const API_BASE = import.meta.env.VITE_API_BASE || '/tof/r1/api'
-// const API_BASE = 'https://win-xp-kernel.onrender.com/tof/r1/api'
+// const API_BASE = import.meta.env.VITE_API_BASE || '/tof/r1/api'
+const API_BASE = 'https://win-xp-kernel.onrender.com/tof/r1/api'
 
 export function getDownloadUrl(relativePath: string): string {
   return `${API_BASE}/file/download?path=${encodeURIComponent(relativePath)}`
